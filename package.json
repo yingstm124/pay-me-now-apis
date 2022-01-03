@@ -7,9 +7,7 @@
     "start": "tsc && node dist/app.js",
     "lint": "eslint . --ext .ts",
     "test": "jest --coverage",
-    "test:watch": "jest --watch",
-    "deploy": "git add . && git commit -m Heroku && git push heroku main",
-    "build": "webpack"
+    "test:watch": "jest --watch"
   },
   "heroku-run-build-script": true,
   "keywords": [],
