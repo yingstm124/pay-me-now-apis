@@ -8,8 +8,10 @@
     "lint": "eslint . --ext .ts",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "deploy": "git add . && git commit -m Heroku && git push heroku main"
+    "deploy": "git add . && git commit -m Heroku && git push heroku main",
+    "build": "webpack"
   },
+  "heroku-run-build-script": true,
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -29,6 +31,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
     "firebase": "^9.6.1",
+    "rimraf": "^3.0.2",
     "ts-node": "^10.4.0"
   },
   "engines": {
