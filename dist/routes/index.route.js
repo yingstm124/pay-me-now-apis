@@ -19,10 +19,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EXAMPLE_PATH = void 0;
 const express = __importStar(require("express"));
 const exampleRoute = __importStar(require("../routes/example.route"));
 const router = express.Router();
-router.use("/example", exampleRoute.default);
+// Controllrt Path
+exports.EXAMPLE_PATH = "example";
+// Controller Setup Routes
+router.use(`/${exports.EXAMPLE_PATH}`, exampleRoute.default);
 router.get("/", (_, res) => res.send("APIs"));
 exports.default = router;
 //# sourceMappingURL=index.route.js.map

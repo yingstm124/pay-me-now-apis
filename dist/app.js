@@ -31,7 +31,7 @@ dotenv_1.default.config({
 });
 // initial Setup
 const app = (0, express_1.default)();
-const port = 3400;
+const port = process.env.PORT || 3400;
 // Express configuration
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
