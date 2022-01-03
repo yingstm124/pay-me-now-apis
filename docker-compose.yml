@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+
+    pay-me-now-apis:
+      build:
+        context: .
+        target: prod
+      container_name: pay-me-now-apis
+      restart: always
+      volumes:
+        - /app/node_modules
+        - .:/app
+      ports:
+        - "3400:3400"
+  

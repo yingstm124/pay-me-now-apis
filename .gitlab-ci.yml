@@ -1,0 +1,48 @@
+image: node:lastest
+
+cache:
+  key: node_modules
+  paths:
+    - node_modules
+
+stages:
+  - install
+  - build
+  - deploy
+
+variables:
+  FIREBASE_DEPLOY_KEY: 1//0g2ExCdH-wxx2CgYIARAAGBASNwF-L9IrO_vUsX4H0mwkzKJpt6n8YERi_WHiiTucdM7dbZSz3zsviWyrWs0_x_AHMPqJ2q4qE24
+  FIREBASE_PROJECT: paymenow-b49f3
+
+install:
+  stage: install
+  only:
+    - main
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules
+  
+build:
+  stage: build
+  only:
+    - main
+  script:
+    - npm start
+  dependencies:
+    - install
+  artifacts:
+    paths:
+      - build
+
+deploy:
+  stage: deploy
+  only:
+    - main
+  script:
+    - npm install -g firebase-tools --cache-folder node_modules
+    - firebase deploy -m"Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --token $FIREBASE_DEPLOY_KEY --project $FIREBASE_PROJECT
+  dependencies:
+    - install
+    - build
