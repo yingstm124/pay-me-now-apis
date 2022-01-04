@@ -7,10 +7,5 @@ FROM prod
 RUN npm ci
 COPY ./ ./
 EXPOSE 3400
-CMD ["npm","test"]
-
-FROM prod
+RUN npm test
 RUN npm ci
-COPY ./ ./
-EXPOSE 3400
-CMD ["npm","start"]
